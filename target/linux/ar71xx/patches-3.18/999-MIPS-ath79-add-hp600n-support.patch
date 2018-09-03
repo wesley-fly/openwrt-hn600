@@ -1,0 +1,44 @@
+diff -ru arch/mips/ath79/Kconfig arch/mips/ath79_mod/Kconfig
+--- arch/mips/ath79/Kconfig	2018-06-20 14:49:53.279347835 +0800
++++ arch/mips/ath79_mod/Kconfig	2018-06-20 14:49:18.896635422 +0800
+@@ -1237,6 +1237,17 @@
+ 	select ATH79_DEV_M25P80
+ 	select ATH79_DEV_USB
+ 
++config ATH79_MACH_HP600N
++	bool "OpenRouter HP600N board support"
++	select SOC_AR934X
++	select ATH79_DEV_AP9X_PCI if PCI
++	select ATH79_DEV_ETH
++	select ATH79_DEV_GPIO_BUTTONS
++	select ATH79_DEV_LEDS_GPIO
++	select ATH79_DEV_M25P80
++	select ATH79_DEV_USB
++	select ATH79_DEV_WMAC
++
+ config ATH79_MACH_TEW_632BRP
+ 	bool "TRENDnet TEW-632BRP support"
+ 	select SOC_AR913X
+diff -ru arch/mips/ath79/machtypes.h arch/mips/ath79_mod/machtypes.h
+--- arch/mips/ath79/machtypes.h	2018-06-20 14:50:14.207172789 +0800
++++ arch/mips/ath79_mod/machtypes.h	2018-06-20 14:49:18.951634962 +0800
+@@ -132,6 +132,7 @@
+ 	ATH79_MACH_RB_SXTLITE5ND,	/* Mikrotik RouterBOARD SXT Lite 5nD */
+ 	ATH79_MACH_RW2458N,		/* Redwave RW2458N */
+ 	ATH79_MACH_SMART_300,		/* NC-LINK SMART-300 */
++	ATH79_MACH_HP600N,		/* OpenRouter HP600N */
+ 	ATH79_MACH_TEW_632BRP,		/* TRENDnet TEW-632BRP */
+ 	ATH79_MACH_TEW_673GRU,		/* TRENDnet TEW-673GRU */
+ 	ATH79_MACH_TEW_712BR,		/* TRENDnet TEW-712BR */
+diff -ru arch/mips/ath79/Makefile arch/mips/ath79_mod/Makefile
+--- arch/mips/ath79/Makefile	2018-06-20 14:49:28.450555510 +0800
++++ arch/mips/ath79_mod/Makefile	2018-06-20 14:49:18.896635422 +0800
+@@ -118,6 +118,7 @@
+ obj-$(CONFIG_ATH79_MACH_RBSXTLITE)	+= mach-rbsxtlite.o
+ obj-$(CONFIG_ATH79_MACH_RW2458N)	+= mach-rw2458n.o
+ obj-$(CONFIG_ATH79_MACH_SMART_300)	+= mach-smart-300.o
++obj-$(CONFIG_ATH79_MACH_HP600N) 	+= mach-hp600n.o
+ obj-$(CONFIG_ATH79_MACH_TEW_632BRP)	+= mach-tew-632brp.o
+ obj-$(CONFIG_ATH79_MACH_TEW_673GRU)	+= mach-tew-673gru.o
+ obj-$(CONFIG_ATH79_MACH_TEW_712BR)	+= mach-tew-712br.o
+
